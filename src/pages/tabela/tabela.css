@@ -38,6 +38,17 @@
   color: #E5E5E5;
 }
 
+.modalAdicionar {
+  width: 50%;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #1D2527;
+  color: #E5E5E5;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: bold;
+}
+
 .table {
   overflow: scroll;
 
@@ -50,4 +61,84 @@ th, td {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
+}
+
+.modal-content {
+  background-color: #E5E5E5 !important;
+  padding: 1em;
+}
+
+.modal-header {
+  border: none !important;
+/* Desktop/Title/H2 */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 150%;
+
+  /* or 36px */
+  display: flex;
+  align-items: center;
+
+  /* Primary */
+  color: #1D2527 !important;
+}
+
+.inputfile {
+  /* visibility: hidden etc. wont work */
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile:focus+label {
+  /* keyboard navigation */
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile+label * {
+  pointer-events: none;
+}
+
+input {
+  border: 1px solid #AFAFAF !important;
+  border-radius: 6px;
+  background-color: transparent !important;
+}
+
+label {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+
+  /* or 24px */
+
+  /* Cinza/Cinza 2 */
+  color: #808080;
+}
+
+.form-control {
+  margin-bottom: 0.6em;
+}
+
+.cancelarModalButton {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 200%;
+
+  /* or 32px */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
 }
