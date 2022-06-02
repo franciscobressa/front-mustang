@@ -27,7 +27,7 @@ function Footer() {
                 A sigla SUV significa Sport Utility Vehicle -- ou seja, veículo utilitário esportivo. As SUVs costumam ter porte avantajado, além de interior espaçoso e possibilidade de trafegar dentro e fora da cidade.
               </span>
             </CardText>
-            <Button>
+            <Button className='col-8 col-md-3'>
               Ver Carros
             </Button>
           </CardBody>
