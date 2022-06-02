@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+.navbar {
+  height: 99px !important
+}
+
 .navItem {
     height: 42px;
     cursor: pointer;
@@ -12,6 +16,11 @@
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navItem:hover {
+  color: #FFFFFF;
 }
 
 .sidebar {
@@ -44,12 +53,16 @@
   color: #1D2527;
   white-space: nowrap;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.navItemMobile:hover {
+  color: #1D2527;
 }
 
 .navItemMobileSelected {
   border-bottom: 2px solid #1D2527;
 }
-
 
 .wrapper {
     height: 100vh;

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Navbar, Nav, NavItem } from "reactstrap";
 import { Icon } from "@iconify/react";
 import "./header.css";
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import Home from "./../../pages/home.js";
+import Tabela from "../../pages/tabela/tabela.js";
 
 function Header() {
 
@@ -30,7 +33,8 @@ function Header() {
 
   return (
     <>
-      <Navbar className="px-2 py-4 d-flex">
+      <Router>          
+      <Navbar className="px-2 py-4 d-flex" style={{float:'top'}}>
         <Icon
           icon="ant-design:menu-outlined"
           onClick={openNav}
@@ -46,18 +50,22 @@ function Header() {
         </div>
 
         <Nav className="mx-auto col-11 justify-content-around d-none d-md-flex">
-          <NavItem className="navItem">Home </NavItem>
-          <NavItem className="navItem">Sobre</NavItem>
-          <NavItem className="navItem">Tabela</NavItem>
-          <NavItem className="navItem">Fale Conosco</NavItem>
-          <NavItem className="navItem">
-            Entrar
-            <Icon
-              icon="ant-design:user-outlined"
-              className="ms-2"
-              style={{ fontSize: "23.5px", color: "white" }}
-            />
-          </NavItem>
+            <NavItem>
+              <Link className="navItem" to="/">Home</Link>
+            </NavItem>
+            <NavItem className="navItem">Sobre</NavItem>
+            <NavItem>
+              <Link className="navItem" to="/tabela">Tabela</Link>
+            </NavItem>
+            <NavItem className="navItem">Fale Conosco</NavItem>
+            <NavItem className="navItem">
+              Entrar
+              <Icon
+                icon="ant-design:user-outlined"
+                className="ms-2"
+                style={{ fontSize: "23.5px", color: "white" }}
+              />
+            </NavItem>         
         </Nav>
       </Navbar>
       
@@ -71,13 +79,24 @@ function Header() {
                 className="my-4"
                 style={{ fontSize: "48.75px", color: "black" }}
               />            
-            <NavItem className="navItemMobile navItemMobileSelected mb-3">Home</NavItem>
+            <NavItem className="navItemMobile mb-3">
+              <Link className="navItemMobile" to="/">Home</Link>
+            </NavItem>
             <NavItem className="navItemMobile mb-3">Fale Conosco</NavItem>
             <NavItem className="navItemMobile mb-3">Sobre</NavItem>
-            <NavItem className="navItemMobile mb-3">Tabela</NavItem>
+            <NavItem className="navItemMobile mb-3">
+                <Link className="navItemMobile" to="/tabela">Tabela</Link>
+            </NavItem>
           </div>
         </>
       )}
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+        </Routes>  
+        <Routes>
+          <Route path="/tabela" element={<Tabela />} />
+        </Routes>    
+      </Router>
     </>
   );
 }

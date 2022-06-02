@@ -1,0 +1,53 @@
+.tabela-titulo {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 150%;
+
+  /* or 84px */
+  display: flex;
+  align-items: center;
+
+  /* Primary */
+  color: #1D2527;
+}
+
+.containerTabela {
+  height: 85vh;
+}
+
+.tabelaAdicionar  {
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid #1D2527;
+  background-color: #E5E5E5;
+  color: #1D2527;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.tabelaAdicionar :hover {
+  background-color: #1D2527;
+  color: #E5E5E5;
+}
+
+.tabelaAdicionar :focus {
+  background-color: #1D2527;
+  color: #E5E5E5;
+}
+
+.table {
+  overflow: scroll;
+
+}
+
+th, td {
+  padding: 1em !important;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}

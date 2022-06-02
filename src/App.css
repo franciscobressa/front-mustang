@@ -5,3 +5,11 @@
 .pointer {
   cursor: pointer;
 }
+
+.bg-cyber-primary {
+  background-color: #1D2527 !important;
+}
+
+.color-cyber-white {
+  color: #EBEFF2 !important;
+}

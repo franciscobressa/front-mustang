@@ -1,4 +1,3 @@
-
 .carousel {
   width: 90%;
 }
@@ -69,7 +68,7 @@
 
 .contentCardImg {
   margin: auto;
-  z-index: 2;
+  z-index: 0;
 }
 
 .contentCardBody {

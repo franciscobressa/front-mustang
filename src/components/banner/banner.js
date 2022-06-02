@@ -1,11 +1,8 @@
 import './banner.css';
-import Header from "../header/header.js";
-
 function Banner() {
     return (
-        <div className="banner">
+        <div className="banner" style={{marginTop:'-100px'}}>
           <div className="bannerImage">
-          <Header />
           </div>
         </div>
     )
