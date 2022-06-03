@@ -7,8 +7,10 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
+import { useSelector } from "react-redux";
 function Tabela() {
   const [modal, setModal] = useState(false);
+  const mustang = useSelector(state => state.mustang.mustangs);
 
  function toggle(){
     setModal(!modal)
@@ -20,7 +22,8 @@ function Tabela() {
         </div>
       <div className="container containerTabela p-5">
           <div className='d-flex justify-content-between align-items-center'>
-            <h1 className='tabela-titulo'>Lista</h1>
+          <h1 className='tabela-titulo'>Lista
+</h1>
           <button className='tabelaAdicionar col-5 col-md-3 d-flex align-items-center justify-content-center' onClick={toggle}>
               <Icon className="me-2" icon="carbon:add" style={{fontSize:'20px'}} />
               Adicionar
@@ -39,39 +42,21 @@ function Tabela() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Mustang</td>
-                  <td>2015</td>
-                  <td>180 km/h</td>
-                  <td>9/10</td>
-                  <td>8/10</td>
-                  <td className='d-flex'>
-                    <Icon className="me-4 pointer" icon="akar-icons:trash-can" style={{ fontSize: '20px' }} />
-                    <Icon className="pointer" icon="clarity:edit-line" onClick={toggle} style={{fontSize:'20px'}} />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Mustang</td>
-                  <td>2015</td>
-                  <td>180 km/h</td>
-                  <td>9/10</td>
-                  <td>8/10</td>
-                  <td className='d-flex'>
-                    <Icon className="me-4 pointer" icon="akar-icons:trash-can" style={{ fontSize: '20px' }} />
-                    <Icon className="pointer" icon="clarity:edit-line" onClick={toggle} style={{ fontSize: '20px' }} />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Mustang</td>
-                  <td>2015</td>
-                  <td>180 km/h</td>
-                  <td>9/10</td>
-                  <td>8/10</td>
-                  <td className='d-flex'>
-                    <Icon className="me-4 pointer" icon="akar-icons:trash-can" style={{ fontSize: '20px' }} />
-                    <Icon className="pointer" icon="clarity:edit-line" onClick={toggle} style={{ fontSize: '20px' }} />
-                  </td>
-                </tr>                            
+                {
+                  mustang.map(mustang => (
+                    <tr key={mustang.id}>
+                      <td>{mustang.nome}</td>
+                      <td>{mustang.ano}</td>
+                      <td>{mustang.velocidade}</td>
+                      <td>{mustang.notaEconomia}</td>
+                      <td>{mustang.notaUsuario}</td>
+                      <td className='d-flex'>
+                        <Icon className="me-4 pointer" icon="akar-icons:trash-can" style={{ fontSize: '20px' }} />
+                        <Icon className="pointer" icon="clarity:edit-line" onClick={toggle} style={{ fontSize: '20px' }} />
+                      </td>
+                    </tr>
+                  ))
+                }                         
               </tbody>
             </Table>
           </div>
@@ -88,8 +73,8 @@ function Tabela() {
             <div className="row">
               <div className="col-5">
                 <img src="/static/Rectangle15.png" alt="Mustang" className="img-fluid" />
-                <input type="file" name="file" id="file" class="inputfile"/>
-                  <label for="file">Selecionar Imagem</label>
+                <input type="file" className="inputfile"/>
+                  <label>Selecionar Imagem</label>
               </div>
               <div className="col-7">
                 <div className="form-group col-12">

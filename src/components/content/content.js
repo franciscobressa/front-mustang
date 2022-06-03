@@ -16,7 +16,6 @@ function Content() {
   const handleLeftCLick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
-    console.log(carousel.current.scrollLeft);
     if (painel > 1) {
       painel--
 
@@ -45,7 +44,6 @@ function Content() {
   const handleRightCLick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft += carousel.current.offsetWidth;
-    console.log(carousel.current.scrollLeft);
     if (painel < 3) {
       painel++
 

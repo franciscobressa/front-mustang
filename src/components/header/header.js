@@ -51,11 +51,11 @@ function Header() {
 
         <Nav className="mx-auto col-11 justify-content-around d-none d-md-flex">
             <NavItem>
-              <Link className="navItem" to="/">Home</Link>
+              <Link  onClick={closeNav} className="navItem" to="/">Home</Link>
             </NavItem>
             <NavItem className="navItem">Sobre</NavItem>
             <NavItem>
-              <Link className="navItem" to="/tabela">Tabela</Link>
+              <Link  onClick={closeNav} className="navItem" to="/tabela">Tabela</Link>
             </NavItem>
             <NavItem className="navItem">Fale Conosco</NavItem>
             <NavItem className="navItem">
@@ -80,12 +80,12 @@ function Header() {
                 style={{ fontSize: "48.75px", color: "black" }}
               />            
             <NavItem className="navItemMobile mb-3">
-              <Link className="navItemMobile" to="/">Home</Link>
+              <Link  onClick={closeNav} className="navItemMobile" to="/">Home</Link>
             </NavItem>
             <NavItem className="navItemMobile mb-3">Fale Conosco</NavItem>
             <NavItem className="navItemMobile mb-3">Sobre</NavItem>
             <NavItem className="navItemMobile mb-3">
-                <Link className="navItemMobile" to="/tabela">Tabela</Link>
+                <Link  onClick={closeNav} className="navItemMobile" to="/tabela">Tabela</Link>
             </NavItem>
           </div>
         </>
