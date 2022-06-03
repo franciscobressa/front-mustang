@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Navbar, Nav, NavItem } from "reactstrap";
-import { Icon } from "@iconify/react";
 import "./header.css";
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Home from "./../../pages/home.js";
@@ -35,18 +34,15 @@ function Header() {
     <>
       <Router>          
       <Navbar className="px-2 py-4 d-flex" style={{float:'top'}}>
-        <Icon
-          icon="ant-design:menu-outlined"
+        <div
           onClick={openNav}
           className="ms-2 d-block d-md-none pointer"
           style={{ fontSize: "42px", color: "white" }}
-        />
+        >
+          aaaa
+        </div>
 
         <div className="brand-logo col-1  d-none d-md-block">
-          <Icon
-            icon="carbon:logo-delicious"
-            style={{ fontSize: "48.75px", color: "white" }}
-          />
         </div>
 
         <Nav className="mx-auto col-11 justify-content-around d-none d-md-flex">
@@ -60,11 +56,6 @@ function Header() {
             <NavItem className="navItem">Fale Conosco</NavItem>
             <NavItem className="navItem">
               Entrar
-              <Icon
-                icon="ant-design:user-outlined"
-                className="ms-2"
-                style={{ fontSize: "23.5px", color: "white" }}
-              />
             </NavItem>         
         </Nav>
       </Navbar>
@@ -74,11 +65,6 @@ function Header() {
         <>
           <div id="wrapper" className="wrapper d-flex d-md-none" onClick={closeNav}></div>
           <div id="mySidebar" className="sidebar d-md-none">
-              <Icon
-                icon="carbon:logo-delicious"
-                className="my-4"
-                style={{ fontSize: "48.75px", color: "black" }}
-              />            
             <NavItem className="navItemMobile mb-3">
               <Link  onClick={closeNav} className="navItemMobile" to="/">Home</Link>
             </NavItem>

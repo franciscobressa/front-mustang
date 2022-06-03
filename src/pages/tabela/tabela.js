@@ -1,6 +1,5 @@
 import { useState } from "react";
 import './tabela.css'
-import { Icon } from '@iconify/react';
 import {
   Table,
   Modal,
@@ -25,7 +24,6 @@ function Tabela() {
           <h1 className='tabela-titulo'>Lista
 </h1>
           <button className='tabelaAdicionar col-5 col-md-3 d-flex align-items-center justify-content-center' onClick={toggle}>
-              <Icon className="me-2" icon="carbon:add" style={{fontSize:'20px'}} />
               Adicionar
             </button>
           </div>
@@ -51,8 +49,6 @@ function Tabela() {
                       <td>{mustang.notaEconomia}</td>
                       <td>{mustang.notaUsuario}</td>
                       <td className='d-flex'>
-                        <Icon className="me-4 pointer" icon="akar-icons:trash-can" style={{ fontSize: '20px' }} />
-                        <Icon className="pointer" icon="clarity:edit-line" onClick={toggle} style={{ fontSize: '20px' }} />
                       </td>
                     </tr>
                   ))
@@ -66,7 +62,7 @@ function Tabela() {
           toggle={toggle}
           isOpen={modal}
         >
-          <ModalHeader toggle={toggle} close={<Icon icon="carbon:close" style={{ fontSize: '20px' }} onClick={toggle} />}>
+          <ModalHeader toggle={toggle}>
             <span>Adicionar Novo</span>
           </ModalHeader>
           <ModalBody>
@@ -107,7 +103,6 @@ function Tabela() {
               <div className="col-12 d-flex align-items-center justify-content-end mt-3">
                 <span className="me-3 pointer cancelarModalButton" onClick={toggle}>Cancelar</span>
                 <button className='modalAdicionar d-flex align-items-center justify-content-center' onClick={toggle}>
-                  <Icon className="me-2" icon="carbon:add" style={{ fontSize: '20px' }} />
                   Adicionar Novo
                 </button>
               </div>

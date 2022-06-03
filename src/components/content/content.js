@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { Icon } from "@iconify/react";
 import {
   Card,
   CardImg,
@@ -73,11 +72,6 @@ function Content() {
       
       <div className='carousel-wrapper d-flex align-items-center my-5 justify-content-center'>
         <div className="controllers pointer d-none d-md-block" onClick={handleLeftCLick}>
-          <Icon
-            icon="bi:chevron-left"
-            className="me-2"
-            style={{ fontSize: "35px", color: "#1D2527" }}
-          />
         </div>
 
         <div className="carousel mx-auto d-flex justify-content-between" ref={carousel}>
@@ -95,19 +89,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -130,19 +120,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -165,19 +151,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -203,19 +185,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -238,19 +216,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -273,19 +247,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -311,19 +281,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -346,19 +312,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -381,19 +343,15 @@ function Content() {
                 <div className='w-100 px-2'>
                   <ul>
                     <li>
-                      <Icon className='me-4' icon="bi:calendar2-date" />
                       2015
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:top-speed-20-regular" />
                       180 Km/h
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="simple-line-icons:energy" />
                       9/10
                     </li>
                     <li className='mt-3'>
-                      <Icon className='me-4' icon="fluent:people-20-regular" />
                       8/10
                     </li>
                   </ul>
@@ -407,11 +365,7 @@ function Content() {
         </div>          
 
         <div className="controllers pointer d-none d-md-flex" onClick={handleRightCLick}>
-          <Icon
-            icon="bi:chevron-right"
-            className="me-2"
-            style={{ fontSize: "35px", color: "#1D2527" }}
-          />
+
         </div>
       </div>
       
