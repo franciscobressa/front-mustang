@@ -75,7 +75,7 @@ function Tabela() {
               <div className="col-5">
                 <img src="/static/Rectangle15.png" alt="Mustang" className="img-fluid" />
                 <input type="file" className="inputfile"/>
-                  <label>Selecionar Imagem</label>
+                <label htmlFor="file">Selecionar Imagem</label>
               </div>
               <div className="col-7">
                 <div className="form-group col-12">
