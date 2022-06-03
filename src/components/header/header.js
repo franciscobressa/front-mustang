@@ -33,9 +33,9 @@ function Header() {
   return (
     <>
       <Router>          
-      <Navbar className="px-2 py-4 d-flex" style={{float:'top'}}>
+        <Navbar className="px-2 py-4 d-flex" style={{float:'top'}}>
         <div onClick={openNav}>
-          <span style={{ fontSize: "42px", color: "white" }} className="iconify ms-2 d-block d-md-none pointer" data-icon="ant-design:menu-outlined"></span>
+          <span data-testid="openNav" style={{ fontSize: "42px", color: "white" }} className="iconify ms-2 d-block d-md-none pointer" data-icon="ant-design:menu-outlined"></span>
         </div>
         <div className="brand-logo col-1  d-none d-md-block">
           <span className="iconify" data-icon="carbon:logo-delicious" style={{ fontSize: "48.75px", color: "white" }}></span>
@@ -59,8 +59,8 @@ function Header() {
 
       {isOpen && (
         <>
-          <div id="wrapper" className="wrapper d-flex d-md-none" onClick={closeNav}></div>
-          <div id="mySidebar" className="sidebar d-md-none">
+        <div id="wrapper" className="wrapper d-flex d-md-none" data-testid="closeNav" onClick={closeNav}></div>
+          <div data-testid="mySidebar" id="mySidebar" className="sidebar d-md-none">
               <span className="iconify my-4" style={{ fontSize: "48.75px", color: "black" }} data-icon="carbon:logo-delicious"></span>
             <NavItem className="navItemMobile mb-3">
               <Link  onClick={closeNav} className="navItemMobile" to="/">Home</Link>
