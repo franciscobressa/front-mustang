@@ -1,11 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./tabela.css"
 import { Table, Modal, ModalHeader, ModalBody } from "reactstrap"
 import { useSelector, useDispatch } from "react-redux"
 import { addMustang, removeMustang, updateMustang } from "../../redux/mustangSlice"
 
 function Tabela() {
-    const mustang = useSelector(state => state.mustang)
+    const mustangStore = useSelector(state => state.mustang)
+
+    const [limit, setLimit] = useState(5)
+
+    const mustang = mustangStore.slice(0, limit)
+
     const [modal, setModal] = useState(false)
     const [modalImagem, setModalImagem] = useState(false)
     const [image, setImage] = useState("")
@@ -17,6 +22,7 @@ function Tabela() {
     const [link, setLink] = useState()
     const [id, setId] = useState()
     const [indexSelected, setIndexSelected] = useState()
+    const [loading, setLoading] = useState(false)
 
     function resetFields () {
         setNome("")
@@ -66,6 +72,10 @@ function Tabela() {
         }
     }
 
+    function nextPage() {
+        setLimit(limit + 1)
+    }
+    
     function toggleImagem() {
         setModalImagem(!modalImagem)
     }
@@ -117,6 +127,23 @@ function Tabela() {
         }))
         toggle()
     }
+
+    useEffect(() => {
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            if(entries.some((entry) => entry.isIntersecting)) {
+                if(limit < mustangStore.length) {
+                    setLoading(true)                
+                    setTimeout(() => {
+                        nextPage()
+                        setLoading(false)                
+                    }, 500)
+                }
+            }
+        });
+
+        intersectionObserver.observe(document.querySelector('#sentinela'));
+        return () => intersectionObserver.disconnect()
+    })
 
     return (
         <div className="tabela">
@@ -173,7 +200,10 @@ function Tabela() {
                                         </div>
                                         <div
                                             onClick={() =>
-                                                handleSelectedMustang(mustang, index)
+                                                handleSelectedMustang(
+                                                    mustang,
+                                                    index
+                                                )
                                             }
                                         >
                                             <span
@@ -185,14 +215,15 @@ function Tabela() {
                                     </td>
                                 </tr>
                             ))}
+                            <tr id="sentinela">
+                                <td></td>
+                            </tr>
                         </tbody>
                     </Table>
                 </div>
 
                 <Modal toggle={toggle} isOpen={modal}>
-                    <ModalHeader
-                        toggle={toggle}
-                    >
+                    <ModalHeader toggle={toggle}>
                         <span>Adicionar Novo</span>
                     </ModalHeader>
                     <ModalBody>
@@ -286,10 +317,12 @@ function Tabela() {
                                     </button>
                                 )}
                                 {id && (
-                                    <button 
+                                    <button
                                         className="modalAdicionar d-flex align-items-center justify-content-center"
-                                        onClick={() => handleUpdateMustang(indexSelected)}
-                                        >
+                                        onClick={() =>
+                                            handleUpdateMustang(indexSelected)
+                                        }
+                                    >
                                         <span
                                             className="iconify me-2"
                                             data-icon="clarity:edit-line"
@@ -303,9 +336,7 @@ function Tabela() {
                     </ModalBody>
                 </Modal>
                 <Modal isOpen={modalImagem} toggle={toggleImagem}>
-                    <ModalHeader
-                        toggle={toggleImagem}
-                    >
+                    <ModalHeader toggle={toggleImagem}>
                         <span>Adicionar Imagem</span>
                     </ModalHeader>
                     <ModalBody>
@@ -393,6 +424,7 @@ function Tabela() {
                     </ModalBody>
                 </Modal>
             </div>
+            {loading && <div id="loader"></div>}
         </div>
     )
 }
