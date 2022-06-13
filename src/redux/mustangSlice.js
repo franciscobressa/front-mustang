@@ -7,9 +7,9 @@ export const slice = createSlice({
             nome: "Mustang 1",
             ano: "2015",
             velocidade: "180 km/h",
-            notaEconomia: "9/10",
-            notaUsuario: "8/10",
-            link: "https://www.mustang.com.br/",
+            notaEconomia: "9",
+            notaUsuario: "8",
+            link: "https://cybergenios.com.br/",
             image: "/static/image11.png",
         },
         {
@@ -17,9 +17,9 @@ export const slice = createSlice({
             nome: "Mustang 2",
             ano: "2016",
             velocidade: "190 km/h",
-            notaEconomia: "9/10",
-            notaUsuario: "5/10",
-            link: "https://www.mustang.com.br/",
+            notaEconomia: "9",
+            notaUsuario: "5",
+            link: "https://cybergenios.com.br/",
             image: "/static/image12.png",
         },
         {
@@ -27,9 +27,9 @@ export const slice = createSlice({
             nome: "Mustang 3",
             ano: "2017",
             velocidade: "200 km/h",
-            notaEconomia: "2/10",
-            notaUsuario: "7/10",
-            link: "https://www.mustang.com.br/",
+            notaEconomia: "2",
+            notaUsuario: "7",
+            link: "https://cybergenios.com.br/",
             image: "/static/image13.png",
         },
         {
@@ -37,9 +37,9 @@ export const slice = createSlice({
             nome: "Mustang 4",
             ano: "2018",
             velocidade: "210 km/h",
-            notaEconomia: "9/10",
-            notaUsuario: "8/10",
-            link: "https://www.mustang.com.br/",
+            notaEconomia: "9",
+            notaUsuario: "8",
+            link: "https://cybergenios.com.br/",
             image: "/static/image14.png",
         },
         {
@@ -47,9 +47,39 @@ export const slice = createSlice({
             nome: "Mustang 5",
             ano: "2019",
             velocidade: "220 km/h",
-            notaEconomia: "9/10",
-            notaUsuario: "8/10",
-            link: "https://www.mustang.com.br/",
+            notaEconomia: "9",
+            notaUsuario: "8",
+            link: "https://cybergenios.com.br/",
+            image: "/static/image15.png",
+        },
+        {
+            id: 3,
+            nome: "Mustang 3",
+            ano: "2017",
+            velocidade: "200 km/h",
+            notaEconomia: "2",
+            notaUsuario: "7",
+            link: "https://cybergenios.com.br/",
+            image: "/static/image13.png",
+        },
+        {
+            id: 4,
+            nome: "Mustang 4",
+            ano: "2018",
+            velocidade: "210 km/h",
+            notaEconomia: "9",
+            notaUsuario: "8",
+            link: "https://cybergenios.com.br/",
+            image: "/static/image14.png",
+        },
+        {
+            id: 5,
+            nome: "Mustang 5",
+            ano: "2019",
+            velocidade: "220 km/h",
+            notaEconomia: "9",
+            notaUsuario: "8",
+            link: "https://cybergenios.com.br/",
             image: "/static/image15.png",
         },
     ],
@@ -74,13 +104,15 @@ export const slice = createSlice({
         updateMustang: (state, action) => {
             state[action.payload.indexSelected].nome = action.payload.nome
             state[action.payload.indexSelected].ano = action.payload.ano
-            state[action.payload.indexSelected].velocidade = action.payload.velocidade
-            state[action.payload.indexSelected].notaEconomia = action.payload.notaEconomia
-            state[action.payload.indexSelected].notaUsuario = action.payload.notaUsuario
+            state[action.payload.indexSelected].velocidade =
+                action.payload.velocidade
+            state[action.payload.indexSelected].notaEconomia =
+                action.payload.notaEconomia
+            state[action.payload.indexSelected].notaUsuario =
+                action.payload.notaUsuario
             state[action.payload.indexSelected].link = action.payload.link
             state[action.payload.indexSelected].image = action.payload.image
-        }
-
+        },
     },
 })
 
