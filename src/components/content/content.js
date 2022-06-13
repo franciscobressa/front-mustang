@@ -6,7 +6,6 @@ function Content() {
     const carousel = useRef(null)
     var painel = 1
     const mustang = useSelector(state => state.mustang)
-
     const handleLeftCLick = e => {
         e.preventDefault()
         carousel.current.scrollLeft -= carousel.current.offsetWidth

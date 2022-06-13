@@ -52,7 +52,6 @@ export const slice = createSlice({
             link: "https://cybergenios.com.br/",
             image: "/static/image15.png",
         },
-
     ],
     reducers: {
         addMustang: (state, action) => {
