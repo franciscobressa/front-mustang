@@ -70,11 +70,21 @@ export const slice = createSlice({
         },
         removeMustang: (state, action) => {
             state.splice(action.payload, 1)
+        },
+        updateMustang: (state, action) => {
+            state[action.payload.indexSelected].nome = action.payload.nome
+            state[action.payload.indexSelected].ano = action.payload.ano
+            state[action.payload.indexSelected].velocidade = action.payload.velocidade
+            state[action.payload.indexSelected].notaEconomia = action.payload.notaEconomia
+            state[action.payload.indexSelected].notaUsuario = action.payload.notaUsuario
+            state[action.payload.indexSelected].link = action.payload.link
+            state[action.payload.indexSelected].image = action.payload.image
         }
+
     },
 })
 
-export const { addMustang, removeMustang } = slice.actions;
+export const { addMustang, removeMustang, updateMustang } = slice.actions;
 
 export default slice.reducer;
 

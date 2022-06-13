@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./tabela.css"
 import { Table, Modal, ModalHeader, ModalBody } from "reactstrap"
 import { useSelector, useDispatch } from "react-redux"
-import { addMustang, removeMustang } from "../../redux/mustangSlice"
+import { addMustang, removeMustang, updateMustang } from "../../redux/mustangSlice"
 
 function Tabela() {
     const mustang = useSelector(state => state.mustang)
@@ -16,6 +16,7 @@ function Tabela() {
     const [nota, setNota] = useState()
     const [link, setLink] = useState()
     const [id, setId] = useState()
+    const [indexSelected, setIndexSelected] = useState()
 
     function resetFields () {
         setNome("")
@@ -26,11 +27,11 @@ function Tabela() {
         setLink("")
         setImage("")
         setId("")
+        setIndexSelected("")
     }
 
     function handleNome (e) {
         setNome(e.target.value) 
-        console.log(nome)
     }
 
     function handleAno (e) {
@@ -69,7 +70,7 @@ function Tabela() {
         setModalImagem(!modalImagem)
     }
 
-    function handleSelectedMustang(mustang) {
+    function handleSelectedMustang(mustang, index) {
         setNome(mustang.nome)
         setAno(mustang.ano)
         setVelocidade(mustang.velocidade)
@@ -78,6 +79,7 @@ function Tabela() {
         setLink(mustang.link)
         setImage(mustang.image)
         setId(mustang.id)
+        setIndexSelected(index)
         toggle()
     }
 
@@ -99,6 +101,21 @@ function Tabela() {
 
     function handleRemoveMustang(id) {
         dispatch(removeMustang(id))
+    }
+
+    function handleUpdateMustang() {
+        dispatch(updateMustang({
+            id,
+            nome,
+            ano,
+            velocidade,
+            notaEconomia: economia,
+            notaUsuario: nota,
+            link,
+            image,
+            indexSelected
+        }))
+        toggle()
     }
 
     return (
@@ -156,7 +173,7 @@ function Tabela() {
                                         </div>
                                         <div
                                             onClick={() =>
-                                                handleSelectedMustang(mustang)
+                                                handleSelectedMustang(mustang, index)
                                             }
                                         >
                                             <span
@@ -175,14 +192,6 @@ function Tabela() {
                 <Modal toggle={toggle} isOpen={modal}>
                     <ModalHeader
                         toggle={toggle}
-                        close={
-                            <span
-                                data-icon="carbon:close"
-                                className="iconify"
-                                style={{ fontSize: "20px" }}
-                                onClick={toggle}
-                            ></span>
-                        }
                     >
                         <span>Adicionar Novo</span>
                     </ModalHeader>
@@ -277,7 +286,10 @@ function Tabela() {
                                     </button>
                                 )}
                                 {id && (
-                                    <button className="modalAdicionar d-flex align-items-center justify-content-center">
+                                    <button 
+                                        className="modalAdicionar d-flex align-items-center justify-content-center"
+                                        onClick={() => handleUpdateMustang(indexSelected)}
+                                        >
                                         <span
                                             className="iconify me-2"
                                             data-icon="clarity:edit-line"
@@ -293,14 +305,6 @@ function Tabela() {
                 <Modal isOpen={modalImagem} toggle={toggleImagem}>
                     <ModalHeader
                         toggle={toggleImagem}
-                        close={
-                            <span
-                                data-icon="carbon:close"
-                                className="iconify"
-                                style={{ fontSize: "20px" }}
-                                onClick={toggleImagem}
-                            ></span>
-                        }
                     >
                         <span>Adicionar Imagem</span>
                     </ModalHeader>
