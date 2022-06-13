@@ -1,123 +1,385 @@
-import { useState } from "react";
-import './tabela.css'
-import {
-  Table,
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from 'reactstrap';
-import { useSelector } from "react-redux";
+import { useState } from "react"
+import "./tabela.css"
+import { Table, Modal, ModalHeader, ModalBody } from "reactstrap"
+import { useSelector, useDispatch } from "react-redux"
+import { addMustang } from "../../redux/mustangSlice"
+
 function Tabela() {
-  const [modal, setModal] = useState(false);
-  const mustang = useSelector(state => state.mustang.mustangs);
+    const mustang = useSelector(state => state.mustang)
+    const [modal, setModal] = useState(false)
+    const [modalImagem, setModalImagem] = useState(false)
+    const [image, setImage] = useState("")
+    const [nome, setNome] = useState()
+    const [ano, setAno] = useState()
+    const [velocidade, setVelocidade] = useState()
+    const [economia, setEconomia] = useState()
+    const [nota, setNota] = useState()
+    const [link, setLink] = useState()
+    const [id, setId] = useState()
 
- function toggle(){
-    setModal(!modal)
-}
+    function resetFields () {
+        setNome("")
+        setAno("")
+        setVelocidade("")
+        setEconomia("")
+        setNota("")
+        setLink("")
+        setImage("")
+        setId("")
+    }
 
-  return (
-      <div className="tabela">
-        <div className="w-100 bg-cyber-primary" style={{height: '100px', marginTop: '-100px'}}>
-        </div>
-      <div className="container containerTabela p-5">
-          <div className='d-flex justify-content-between align-items-center'>
-          <h1 className='tabela-titulo'>Lista
-</h1>
-          <button className='tabelaAdicionar col-5 col-md-3 d-flex align-items-center justify-content-center' onClick={toggle}>
-             <span className="iconify me-2" data-icon="carbon:add" style={{fontSize:'20px'}}></span>
-              Adicionar
-            </button>
-          </div>
-          <div className="table-responsive"> 
-            <Table>
-              <thead className='bg-cyber-primary color-cyber-white'>
-                <tr>
-                  <th className='col-3'>Nome</th>
-                  <th>Ano</th>
-                  <th>Velocidade Km/h</th>
-                  <th>Nota Economia</th>
-                  <th>Nota Usuário</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  mustang.map(mustang => (
-                    <tr key={mustang.id}>
-                      <td>{mustang.nome}</td>
-                      <td>{mustang.ano}</td>
-                      <td>{mustang.velocidade}</td>
-                      <td>{mustang.notaEconomia}</td>
-                      <td>{mustang.notaUsuario}</td>
-                      <td className='d-flex'>
-                        <span className="iconify me-4 pointer" data-icon="akar-icons:trash-can" style={{ fontSize: '20px' }}></span>
-                        <div onClick={toggle}>
-                          <span className="iconify me-4 pointer" data-icon="clarity:edit-line"  style={{ fontSize: '20px' }}></span>
+    function handleNome (e) {
+        setNome(e.target.value) 
+        console.log(nome)
+    }
+
+    function handleAno (e) {
+        setAno(e.target.value)
+    }
+
+    function handleVelocidade (e) {
+        setVelocidade(e.target.value)
+    }
+
+    function handleEconomia (e) {
+        setEconomia(e.target.value)
+    }
+
+    function handleNota (e) {
+        setNota(e.target.value)
+    }
+
+    function handleLink (e) {
+        setLink(e.target.value)
+    }
+
+    function handleSetImage (link) {
+        setImage(link)
+        toggleImagem()
+    }
+
+    function toggle() {
+        setModal(!modal)
+        if(modal) {
+            resetFields()
+        }
+    }
+
+    function toggleImagem() {
+        setModalImagem(!modalImagem)
+    }
+
+    function handleSelectedMustang(mustang) {
+        setNome(mustang.nome)
+        setAno(mustang.ano)
+        setVelocidade(mustang.velocidade)
+        setEconomia(mustang.notaEconomia)
+        setNota(mustang.notaUsuario)
+        setLink(mustang.link)
+        setImage(mustang.image)
+        setId(mustang.id)
+        toggle()
+    }
+
+    const dispatch = useDispatch()
+
+    function addNewMustang(event) {
+        event.preventDefault()
+        dispatch(addMustang({
+            nome,
+            ano,
+            velocidade,
+            notaEconomia: economia,
+            notaUsuario: nota,
+            link,
+            image
+        }))
+    }
+
+    return (
+        <div className="tabela">
+            <div
+                className="w-100 bg-cyber-primary"
+                style={{ height: "100px", marginTop: "-100px" }}
+            ></div>
+            <div className="container containerTabela p-5">
+                <div className="d-flex justify-content-between align-items-center">
+                    <h1 className="tabela-titulo">Lista</h1>
+                    <button
+                        className="tabelaAdicionar col-5 col-md-3 d-flex align-items-center justify-content-center"
+                        onClick={toggle}
+                    >
+                        <span
+                            className="iconify me-2"
+                            data-icon="carbon:add"
+                            style={{ fontSize: "20px" }}
+                        ></span>
+                        Adicionar
+                    </button>
+                </div>
+                <div className="table-responsive">
+                    <Table>
+                        <thead className="bg-cyber-primary color-cyber-white">
+                            <tr>
+                                <th className="col-3">Nome</th>
+                                <th>Ano</th>
+                                <th>Velocidade Km/h</th>
+                                <th>Nota Economia</th>
+                                <th>Nota Usuário</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {mustang.map(mustang => (
+                                <tr key={mustang.id}>
+                                    <td>{mustang.nome}</td>
+                                    <td>{mustang.ano}</td>
+                                    <td>{mustang.velocidade}</td>
+                                    <td>{mustang.notaEconomia}</td>
+                                    <td>{mustang.notaUsuario}</td>
+                                    <td className="d-flex">
+                                        <span
+                                            className="iconify me-4 pointer"
+                                            data-icon="akar-icons:trash-can"
+                                            style={{ fontSize: "20px" }}
+                                        ></span>
+                                        <div
+                                            onClick={() =>
+                                                handleSelectedMustang(mustang)
+                                            }
+                                        >
+                                            <span
+                                                className="iconify me-4 pointer"
+                                                data-icon="clarity:edit-line"
+                                                style={{ fontSize: "20px" }}
+                                            ></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </div>
+
+                <Modal toggle={toggle} isOpen={modal}>
+                    <ModalHeader
+                        toggle={toggle}
+                        close={
+                            <span
+                                data-icon="carbon:close"
+                                className="iconify"
+                                style={{ fontSize: "20px" }}
+                                onClick={toggle}
+                            ></span>
+                        }
+                    >
+                        <span>Adicionar Novo</span>
+                    </ModalHeader>
+                    <ModalBody>
+                        <div className="row">
+                            <div className="col-5">
+                                <img
+                                    src={image}
+                                    alt="Nenhuma imagem selecionada"
+                                    className="img-fluid"
+                                />
+                                <button onClick={toggleImagem}>
+                                    Adicionar/Alterar imagem
+                                </button>
+                            </div>
+                            <div className="col-7">
+                                <div className="form-group col-12">
+                                    <label>Nome</label>
+                                    <input
+                                        value={nome}
+                                        type="text"
+                                        className="form-control"
+                                        onChange={handleNome}
+                                    />
+                                </div>
+                                <div className="form-group col-12">
+                                    <label>Ano</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={ano}
+                                        onChange={handleAno}
+                                    />
+                                </div>
+                                <div className="form-group col-12">
+                                    <label>Velocidade Máxima Km/h</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={velocidade}
+                                        onChange={handleVelocidade}
+                                    />
+                                </div>
+                                <div className="form-group col-12">
+                                    <label>Nota economia</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={economia}
+                                        onChange={handleEconomia}
+                                    />
+                                </div>
+                                <div className="form-group col-12">
+                                    <label>Nota usuários</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={nota}
+                                        onChange={handleNota}
+                                    />
+                                </div>
+                                <div className="form-group col-12">
+                                    <label>Link produto</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={link}
+                                        onChange={handleLink}
+                                    />
+                                </div>
+                            </div>
                         </div>
-                      </td>
-                    </tr>
-                  ))
-                }                         
-              </tbody>
-            </Table>
-          </div>
-
-
-        <Modal
-          toggle={toggle}
-          isOpen={modal}
-        >
-          <ModalHeader toggle={toggle} close={<span data-icon="carbon:close" className="iconify" style={{ fontSize: '20px' }} onClick={toggle}></span>}>
-            <span>Adicionar Novo</span>
-          </ModalHeader>
-          <ModalBody>
-            <div className="row">
-              <div className="col-5">
-                <img src="/static/Rectangle15.png" alt="Mustang" className="img-fluid" />
-                <input type="file" className="inputfile"/>
-                <label htmlFor="file">Selecionar Imagem</label>
-              </div>
-              <div className="col-7">
-                <div className="form-group col-12">
-                  <label>Nome</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="form-group col-12">
-                  <label>Ano</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="form-group col-12">
-                  <label>Velocidade Máxima Km/h</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="form-group col-12">
-                  <label>Nota economia</label>
-                  <input type="text" className="form-control" />
-                </div>     
-                <div className="form-group col-12">
-                  <label>Nota usuários</label>
-                  <input type="text" className="form-control" />
-                </div>       
-                <div className="form-group col-12">
-                  <label>Link produto</label>
-                  <input type="text" className="form-control" />
-                </div>                                                                      
-              </div>
+                        <div className="row">
+                            <div className="col-12 d-flex align-items-center justify-content-end mt-3">
+                                <span
+                                    className="me-3 pointer cancelarModalButton"
+                                    onClick={toggle}
+                                >
+                                    Cancelar
+                                </span>
+                                {!id && (
+                                    <button
+                                        className="modalAdicionar d-flex align-items-center justify-content-center"
+                                        onClick={addNewMustang}
+                                    >
+                                        <span
+                                            className="iconify me-2"
+                                            data-icon="carbon:add"
+                                            style={{ fontSize: "20px" }}
+                                        ></span>
+                                        Adicionar Novo
+                                    </button>
+                                )}
+                                {id && (
+                                    <button className="modalAdicionar d-flex align-items-center justify-content-center">
+                                        <span
+                                            className="iconify me-2"
+                                            data-icon="clarity:edit-line"
+                                            style={{ fontSize: "20px" }}
+                                        ></span>
+                                        Alterar
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </ModalBody>
+                </Modal>
+                <Modal isOpen={modalImagem} toggle={toggleImagem}>
+                    <ModalHeader
+                        toggle={toggleImagem}
+                        close={
+                            <span
+                                data-icon="carbon:close"
+                                className="iconify"
+                                style={{ fontSize: "20px" }}
+                                onClick={toggleImagem}
+                            ></span>
+                        }
+                    >
+                        <span>Adicionar Imagem</span>
+                    </ModalHeader>
+                    <ModalBody>
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image11.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image11.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image12.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image12.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image13.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image13.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image14.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image14.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image15.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image15.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image16.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image16.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image17.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image17.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image18.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image18.png"
+                        />
+                        <img
+                            onClick={() =>
+                                handleSetImage("../../static/image19.png")
+                            }
+                            className="selectImage"
+                            height="80px"
+                            alt="mustang"
+                            src="../../static/image19.png"
+                        />
+                    </ModalBody>
+                </Modal>
             </div>
-            <div className="row">
-              <div className="col-12 d-flex align-items-center justify-content-end mt-3">
-                <span className="me-3 pointer cancelarModalButton" onClick={toggle}>Cancelar</span>
-                <button className='modalAdicionar d-flex align-items-center justify-content-center' onClick={toggle}>
-                  <span className="iconify me-2" data-icon="carbon:add" style={{ fontSize: '20px' }}></span>
-                  Adicionar Novo
-                </button>
-              </div>
-            </div>
-          </ModalBody>
-        </Modal>
-        </div>       
-      </div>
-  );
+        </div>
+    )
 }
 
 export default Tabela
