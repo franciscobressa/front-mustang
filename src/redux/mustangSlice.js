@@ -68,10 +68,13 @@ export const slice = createSlice({
 
             state.push(newMustang)
         },
+        removeMustang: (state, action) => {
+            state.splice(action.payload, 1)
+        }
     },
 })
 
-export const { addMustang } = slice.actions;
+export const { addMustang, removeMustang } = slice.actions;
 
 export default slice.reducer;
 

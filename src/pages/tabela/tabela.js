@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./tabela.css"
 import { Table, Modal, ModalHeader, ModalBody } from "reactstrap"
 import { useSelector, useDispatch } from "react-redux"
-import { addMustang } from "../../redux/mustangSlice"
+import { addMustang, removeMustang } from "../../redux/mustangSlice"
 
 function Tabela() {
     const mustang = useSelector(state => state.mustang)
@@ -94,6 +94,11 @@ function Tabela() {
             link,
             image
         }))
+        toggle()
+    }
+
+    function handleRemoveMustang(id) {
+        dispatch(removeMustang(id))
     }
 
     return (
@@ -130,7 +135,7 @@ function Tabela() {
                             </tr>
                         </thead>
                         <tbody>
-                            {mustang.map(mustang => (
+                            {mustang.map((mustang, index) => (
                                 <tr key={mustang.id}>
                                     <td>{mustang.nome}</td>
                                     <td>{mustang.ano}</td>
@@ -138,11 +143,17 @@ function Tabela() {
                                     <td>{mustang.notaEconomia}</td>
                                     <td>{mustang.notaUsuario}</td>
                                     <td className="d-flex">
-                                        <span
-                                            className="iconify me-4 pointer"
-                                            data-icon="akar-icons:trash-can"
-                                            style={{ fontSize: "20px" }}
-                                        ></span>
+                                        <div
+                                            onClick={() =>
+                                                handleRemoveMustang(index)
+                                            }
+                                        >
+                                            <span
+                                                className="iconify me-4 pointer"
+                                                data-icon="akar-icons:trash-can"
+                                                style={{ fontSize: "20px" }}
+                                            ></span>
+                                        </div>
                                         <div
                                             onClick={() =>
                                                 handleSelectedMustang(mustang)

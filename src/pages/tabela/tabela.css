@@ -32,6 +32,10 @@
     color: #E5E5E5;
 }
 
+.tabela {
+    min-height: 100vh;
+}
+
 .modalAdicionar {
     width: 50%;
     height: 48px;
@@ -41,10 +45,6 @@
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: bold;
-}
-
-.table {
-    overflow: scroll;
 }
 
 .selectImage:hover {
